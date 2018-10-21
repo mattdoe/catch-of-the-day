@@ -7,7 +7,7 @@ class StorePicker extends Component {
 
     goToStore = (event) => {
         event.preventDefault();
-        console.log(this.myInput);
+        this.props.history.push(`/store/${this.myInput.value.value}`);
     };
 
     render() {
