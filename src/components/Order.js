@@ -5,23 +5,28 @@ class Order extends Component {
 
     renderOrder = (key) => {
         const fish = this.props.fishes[key];
-        const count = this.props.order[key];
-        const isAvailable = fish.status === 'available';
-        if (!isAvailable) {
+        if (fish) {
+            const count = this.props.order[key];
+            const isAvailable = fish.status === 'available';
+
+            if (!isAvailable) {
+                return (
+                    <li key={key}>
+                        Sorry, {fish ? fish.name : 'fish'} is no longer available.
+                    </li>
+                )
+            }
+
             return (
                 <li key={key}>
-                    Sorry, {fish ? fish.name : 'fish'} is no longer available.
+                    {count} lbs {fish.name}
+
+                    {formatPrice(count * fish.price)}
                 </li>
-            )
+            );
         }
 
-        return (
-            <li key={key}>
-                {count} lbs {fish.name}
-
-                {formatPrice(count * fish.price)}
-            </li>
-        );
+        return null;
     };
 
     render() {
