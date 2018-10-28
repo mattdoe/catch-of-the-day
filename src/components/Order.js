@@ -19,7 +19,6 @@ class Order extends Component {
             timeout: {
                 enter: 500,
                 exit: 500
-
             }
         };
 
